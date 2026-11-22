@@ -31,5 +31,3 @@ Advisors:
 
 Programming Language:
 - Python
-
-test
