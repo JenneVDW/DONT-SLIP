@@ -6,7 +6,6 @@ import random
 from pynput import keyboard
 
 groen = (0, 100, 50)
-geel = (255, 255, 0)
 zwart = (0, 0, 0)
 grijs = (50, 50, 50)
 wit = (255, 255, 255)
