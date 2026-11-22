@@ -5,8 +5,6 @@ import time
 import random
 from pynput import keyboard
 
-refresh_rate = 60
-
 groen = (0, 100, 50)
 geel = (255, 255, 0)
 zwart = (0, 0, 0)
@@ -14,6 +12,8 @@ grijs = (50, 50, 50)
 wit = (255, 255, 255)
 vel_a = 0
 vel_b = 2
+stored_vel_a = 0
+stored_vel_b = 0
 name = "Local Save"
 
 if getattr(sys, 'frozen', False):                                   # aanmaak saves folder
@@ -26,14 +26,15 @@ os.makedirs(saves_dir, exist_ok=True)
 delete_old_saves = False           
 all_scores = []
 
-pygame.init()                                          # opstart van pygame
+pygame.init()                                           # opstart van pygame
 scherm = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("DON'T SLIP! v1.0.0")
+pygame.display.set_caption("DON'T SLIP! v1.0.1")
 font = pygame.font.Font(None, 50)
 font_small = pygame.font.Font(None, 35)
 running = True
 startscherm = True
 gamerunning = False
+gamepaused = False
 
 name_display = pygame.Rect(50, 25, 700, 50)           # opmaak naam input
 name_input = pygame.Rect(175, 100, 450, 50)
@@ -69,6 +70,8 @@ leaderboard_text = pygame.Rect(150, 175, 500, 50)
 leaderboard_1 = pygame.Rect(150, 250, 500, 50)          # opmaak van leaderboard
 leaderboard_2 = pygame.Rect(150, 300, 500, 50)
 leaderboard_3 = pygame.Rect(150, 350, 500, 50)
+
+gamepauseddisplay = pygame.Rect(0, 0, 300, 50)
 
 while running:
 
@@ -163,7 +166,7 @@ while running:
             if character_frame == 12:
                 img_character = pygame.image.load(os.path.join("textures", "Character1.png"))
             if character_frame == 18:
-                img_character = pygame.image.load(os.path.join("textures", "Character1.png"))
+                img_character = pygame.image.load(os.path.join("textures", "Character3.png"))
         if vel_a < 0:
             blit_character = scherm.blit(img_character_turning_left, character)
         if vel_a > 0:
@@ -210,6 +213,7 @@ while running:
                 score += 1
 
         if stage > 3:                                                   # aanmaak rat
+            blit_rat = scherm.blit(img_rat, rat)
             rat_frame += 1                                              # animatie rat
             if rat_frame == 18:
                 rat_frame = 0
@@ -219,8 +223,9 @@ while running:
                 img_rat = pygame.image.load(os.path.join("textures", "Rat2.png"))
             if rat_frame == 12:
                 img_rat = pygame.image.load(os.path.join("textures", "Rat3.png"))
-            blit_rat = scherm.blit(img_rat, rat)
             rat.y += (vel_b + speed*vel_b + 1)
+            if gamepaused:
+                rat.y -= 1
             if rat.y > 600:
                 rat.y = random.randint(-1000, -50)
                 rat.x = random.choice([175, 375, 575])
@@ -278,17 +283,36 @@ while running:
         if character.colliderect(rat):
             startscherm = True
             gamerunning = False
-        
+
+    if gamepaused:
+
+        pygame.draw.rect(scherm, zwart, gamepauseddisplay)                   # game paused text
+        text = font.render("Game Paused", True, wit)
+        text_rect = text.get_rect(center=gamepauseddisplay.center)
+        scherm.blit(text, text_rect)
+
+        if stored_vel_a < 0:
+            blit_character = scherm.blit(img_character_turning_left, character)
+        if stored_vel_a > 0:
+            blit_character = scherm.blit(img_character_turning_right, character)
+        else:
+            img_character = pygame.image.load(os.path.join("textures", "Character1.png"))
+
+        img_rat = pygame.image.load(os.path.join("textures", "rat1.png"))
+
+
     for event in pygame.event.get():
 
         if startscherm:
+
             if event.type == pygame.MOUSEBUTTONDOWN:                 # acties aan start van game
                 if startknop.collidepoint(event.pos):
                     startscherm = False
                     gamerunning = True
-                    score = 0                         # OP 0 ZETTEN VOOR ECHTE RELEASE
-                    # speed = 1                           # DELETE DEZE LIJN VOOR ECHTE RELEASE
+                    score = 100                         # OP 0 ZETTEN VOOR ECHTE RELEASE
+                    speed = 2                           # DELETE DEZE LIJN VOOR ECHTE RELEASE
                     vel_a = 0
+                    vel_b = 2
                     character.x = 350
                     character_frame = 0
                     banaan_1.y = 0
@@ -322,19 +346,39 @@ while running:
                             name += event.unicode
 
         if gamerunning:
-            if event.type == pygame.KEYDOWN:                        # movement keybinds
-                if event.key == pygame.K_LEFT:
-                    if character.x == 350 or character.x == 550:
-                        vel_a = -20
-                if event.key == pygame.K_RIGHT:
-                    if character.x == 350 or character.x == 150:
-                        vel_a = 20
+
+            if event.type == pygame.KEYDOWN:
+                if gamepaused == False:                           # movement keybinds
+                    if event.key == pygame.K_LEFT:
+                        if character.x == 350 or character.x == 550:
+                            vel_a = -20
+                    if event.key == pygame.K_RIGHT:
+                        if character.x == 350 or character.x == 150:
+                            vel_a = 20
+
+                    if event.key == pygame.K_SPACE:                 # turn sprinting on
+                        vel_b = 4
+
+                if event.key == pygame.K_ESCAPE:                  # game pause keybind
+                    gamepaused = not gamepaused
+                    if gamepaused:
+                        stored_vel_a = vel_a
+                        vel_a = 0
+                        vel_b = 0
+                    else:
+                        vel_a = stored_vel_a
+                        vel_b = 2
+
+            if event.type == pygame.KEYUP:
+                if gamepaused == False:
+                    if event.key == pygame.K_SPACE:
+                        vel_b = 2                              # turn sprinting off
 
         if event.type == pygame.QUIT:
             running = False
         
     # refresh scherm
     pygame.display.flip()
-    time.sleep(1/refresh_rate)
+    time.sleep(1/60)
 
 pygame.quit()
