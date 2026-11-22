@@ -26,7 +26,7 @@ os.makedirs(saves_dir, exist_ok=True)
 delete_old_saves = False           
 all_scores = []
 
-pygame.init()                                           # opstart van pygame
+pygame.init()                                          # opstart van pygame
 scherm = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("DON'T SLIP! v1.0.0")
 font = pygame.font.Font(None, 50)
