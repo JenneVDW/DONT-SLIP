@@ -1,0 +1,33 @@
+Game Design:
+- Jenne Vandewoestyne
+- Ties Delobelle
+- Ines ben Atigue (als ik het idee van jumpscare gebruik)
+
+Character Design:
+- Jenne Vandewoestyne
+- Ties Delobelle
+
+Game Programming:
+- Jenne Vandewoestyne
+
+Art:
+- Jenne Vandewoestyne
+
+Playtesters:
+- Jenne Vandewoestyne
+- Ties Delobelle
+- Ines Ben Atigue
+- Elias El Massaoul
+- Wout Van Assche
+- Arn Biesbrouck
+
+Bugtesters:
+- Jenne Vandewoestyne
+- Ties Delobelle
+
+Advisors:
+- ChatGPT
+- Gemini
+
+Programming Language:
+- Python

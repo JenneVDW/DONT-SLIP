@@ -1,0 +1,3 @@
+python -m PyInstaller --onefile --noconsole "Don't Slip.py"
+
+then create file structure
