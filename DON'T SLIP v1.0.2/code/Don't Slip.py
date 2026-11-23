@@ -35,7 +35,8 @@ startscherm = True
 gamerunning = False
 gamepaused = False
 
-name_display = pygame.Rect(50, 25, 700, 50)           # opmaak naam input
+img_name_display = pygame.image.load(os.path.join("textures", "NameDisplay.png"))           # opmaak naam input
+name_display = pygame.Rect(50, 25, 700, 50)
 name_input = pygame.Rect(175, 100, 450, 50)
 name_being_input = False
 
@@ -79,7 +80,7 @@ while running:
 
         scherm.fill(groen)
 
-        pygame.draw.rect(scherm, zwart, name_display)                   # aanmaken naam display
+        blit_name_display = scherm.blit(img_name_display, name_display)                   # aanmaken naam display
         text = font.render(f"Save File: {name}", True, wit)
         text_rect = text.get_rect(center=name_display.center)
         scherm.blit(text, text_rect)
