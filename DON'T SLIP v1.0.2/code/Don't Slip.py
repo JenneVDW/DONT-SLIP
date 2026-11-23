@@ -299,7 +299,6 @@ while running:
 
         img_rat = pygame.image.load(os.path.join("textures", "rat1.png"))
 
-
     for event in pygame.event.get():
 
         if startscherm:
