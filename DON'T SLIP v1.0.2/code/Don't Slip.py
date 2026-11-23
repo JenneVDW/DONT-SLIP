@@ -64,13 +64,14 @@ highscorecounter = pygame.Rect(450, 550, 350, 50)       # opmaak highscore telle
 
 possibilitychecker = pygame.Rect(0, -300, 800, 250)     # opmaak possibility checker
 
+img_leaderboard = pygame.image.load(os.path.join("textures", "Leaderboard.png"))
 leaderboard = pygame.Rect(150, 175, 500, 225)
-leaderboard_text = pygame.Rect(150, 175, 500, 50)
-leaderboard_1 = pygame.Rect(150, 250, 500, 50)          # opmaak van leaderboard
-leaderboard_2 = pygame.Rect(150, 300, 500, 50)
-leaderboard_3 = pygame.Rect(150, 350, 500, 50)
+leaderboard_text = pygame.Rect(150, 180, 500, 50)
+leaderboard_1 = pygame.Rect(150, 238, 500, 50)          # opmaak van leaderboard
+leaderboard_2 = pygame.Rect(150, 288, 500, 50)
+leaderboard_3 = pygame.Rect(150, 338, 500, 50)
 
-gamepauseddisplay = pygame.Rect(0, 0, 300, 50)
+gamepauseddisplay = pygame.Rect(0, 0, 300, 50)          # opmaak pauseddisplay
 
 while running:
 
@@ -101,7 +102,7 @@ while running:
                 with open(os.path.join(saves_dir, f"{name}.txt"), "w") as file:
                     file.write("0")
 
-        pygame.draw.rect(scherm, zwart, leaderboard)                        # aanmaak leaderboard
+        blit_leaderboard = scherm.blit(img_leaderboard, leaderboard)      # aanmaak leaderboard
         all_scores = []
         for x in os.listdir(saves_dir):
             with open(os.path.join(saves_dir, x), "r") as file:
@@ -110,23 +111,19 @@ while running:
                 else:
                     all_scores.append((os.path.splitext(x)[0], int(file.read())))
             all_scores.sort(key = lambda y: y[1], reverse = True)
-        pygame.draw.rect(scherm, zwart, leaderboard_text)               # leaderboard text
-        text = font.render("Local Leaderboard", True, wit)
+        text = font.render("Local Leaderboard", True, wit)              # leaderboard text
         text_rect = text.get_rect(center=leaderboard_text.center)
-        scherm.blit(text, text_rect)
-        pygame.draw.rect(scherm, zwart, leaderboard_1)                  # number 1
-        x, y = all_scores[0]
+        scherm.blit(text, text_rect)                  
+        x, y = all_scores[0]                                           # number 1
         text = font_small.render(f"1. {x}: {y}", True, wit)
         text_rect = text.get_rect(center=leaderboard_1.center)
-        scherm.blit(text, text_rect)
-        pygame.draw.rect(scherm, zwart, leaderboard_2)                  # number 2
-        if len(all_scores) > 1:
+        scherm.blit(text, text_rect)                  
+        if len(all_scores) > 1:                                         # number 2
             x, y = all_scores[1]
             text = font_small.render(f"2. {x}: {y}", True, wit)
             text_rect = text.get_rect(center=leaderboard_2.center)
             scherm.blit(text, text_rect)
-        pygame.draw.rect(scherm, zwart, leaderboard_3)                  # number 3
-        if len(all_scores) > 2:
+        if len(all_scores) > 2:                                         # number 3
             x, y = all_scores[2]
             text = font_small.render(f"3. {x}: {y}", True, wit)
             text_rect = text.get_rect(center=leaderboard_3.center)
