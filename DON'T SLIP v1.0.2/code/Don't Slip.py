@@ -48,6 +48,7 @@ img_character_turning_left = pygame.image.load(os.path.join("textures", "Charact
 img_character_turning_right = pygame.transform.flip(img_character_turning_left, 1, False)
 character = img_character.get_rect()
 character.y = 425
+character_collision = pygame.Rect(0, 450, 50, 25)
 
 img_banaan = pygame.image.load(os.path.join("textures", "Banana.png"))            # opmaak van banaan
 banaan_variant_1 = pygame.transform.rotate(pygame.transform.flip(img_banaan, random.randint(0, 1), False), random.randint(-15,15))
@@ -169,6 +170,7 @@ while running:
             blit_character = scherm.blit(img_character_turning_left, character)
         if vel_a > 0:
             blit_character = scherm.blit(img_character_turning_right, character)
+        character_collision.x = character.x
 
         if score < 10:                                                  # stage criteria
             stage = 1
@@ -272,13 +274,13 @@ while running:
             with open(os.path.join(saves_dir, f"{name}.txt"), "w") as file:
                 file.write(str(highscore))
 
-        if character.colliderect(banaan_1):                             # collisionchecks
+        if character_collision.colliderect(banaan_1):                             # collisionchecks
             startscherm = True
             gamerunning = False
-        if character.colliderect(banaan_2):
+        if character_collision.colliderect(banaan_2):
             startscherm = True
             gamerunning = False
-        if character.colliderect(rat):
+        if character_collision.colliderect(rat):
             startscherm = True
             gamerunning = False
 
