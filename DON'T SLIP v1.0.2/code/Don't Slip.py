@@ -40,7 +40,8 @@ name_display = pygame.Rect(50, 25, 700, 50)
 name_input = pygame.Rect(175, 100, 450, 50)
 name_being_input = False
 
-startknop = pygame.Rect(300, 425, 200, 100)            # opmaak van startknop
+img_startknop = pygame.image.load(os.path.join("textures", "Startbutton.png"))            # opmaak van startknop
+startknop = pygame.Rect(300, 425, 200, 100)
 
 img_character = pygame.image.load(os.path.join("textures", "Character1.png"))     # opmaak van character
 img_character_turning_left = pygame.image.load(os.path.join("textures", "Character_turning_left.png"))
@@ -130,7 +131,7 @@ while running:
             text_rect = text.get_rect(center=leaderboard_3.center)
             scherm.blit(text, text_rect)
 
-        pygame.draw.rect(scherm, zwart, startknop)                      # aanmaken startknop
+        blit_startknop = scherm.blit(img_startknop, startknop)                      # aanmaken startknop
         text = font.render("Start", True, wit)
         text_rect = text.get_rect(center=startknop.center)
         scherm.blit(text, text_rect)
