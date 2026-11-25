@@ -303,7 +303,7 @@ while running:
         else:
             img_character = pygame.image.load(os.path.join("textures", "Character1.png"))
 
-        img_rat = pygame.image.load(os.path.join("textures", "rat1.png"))
+        img_rat = pygame.image.load(os.path.join("textures", "Rat1.png"))
 
     for event in pygame.event.get():
 
