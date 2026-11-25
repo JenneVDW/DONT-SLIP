@@ -65,7 +65,8 @@ scorecounter = pygame.Rect(0, 550, 250, 50)                # opmaak score teller
 
 stagecounter = pygame.Rect(250, 550, 200, 50)           # opmaak stage teller
 
-highscorecounter = pygame.Rect(450, 550, 350, 50)       # opmaak highscore teller
+img_highscore = pygame.image.load(os.path.join("textures", "Highscore.png"))       # opmaak highscore teller
+highscorecounter = pygame.Rect(450, 550, 350, 50)
 
 possibilitychecker = pygame.Rect(0, -300, 800, 250)     # opmaak possibility checker
 
@@ -139,13 +140,13 @@ while running:
         text_rect = text.get_rect(center=startknop.center)
         scherm.blit(text, text_rect)
 
-        pygame.draw.rect(scherm, zwart, highscorecounter)               # aanmaken highscorecounter
+        blit_highscore = scherm.blit(img_highscore, highscorecounter)               # aanmaken highscorecounter
         if highscore < 1000000:
-            text = font.render(f"Highscore: {highscore}", True, wit)
+            text = font.render(f"Highscore: {highscore}", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
             scherm.blit(text, text_rect)
         else:
-            text = font.render("Cheating huh?", True, wit)
+            text = font.render("Cheating huh?", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
             scherm.blit(text, text_rect)
 
@@ -261,13 +262,13 @@ while running:
         text_rect = text.get_rect(center=stagecounter.center)
         scherm.blit(text, text_rect)
 
-        pygame.draw.rect(scherm, zwart, highscorecounter)               # aanmaak highscorecounter
+        blit_highscore = scherm.blit(img_highscore, highscorecounter)               # aanmaak highscorecounter
         if highscore < 1000000:
-            text = font.render(f"Highscore: {highscore}", True, wit)
+            text = font.render(f"Highscore: {highscore}", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
             scherm.blit(text, text_rect)
         else:
-            text = font.render("Cheating huh?", True, wit)
+            text = font.render("Cheating huh?", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
             scherm.blit(text, text_rect)
 
