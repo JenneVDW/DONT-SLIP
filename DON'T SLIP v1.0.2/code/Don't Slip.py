@@ -61,9 +61,11 @@ banaan_2 = img_banaan.get_rect()
 img_rat = pygame.image.load(os.path.join("textures", "Rat1.png"))                     # opmaak van rat
 rat = img_rat.get_rect()
 
-scorecounter = pygame.Rect(0, 550, 250, 50)                # opmaak score teller
+img_score = pygame.image.load(os.path.join("textures", "Score.png"))                # opmaak score teller
+scorecounter = pygame.Rect(0, 550, 250, 50)
 
-stagecounter = pygame.Rect(250, 550, 200, 50)           # opmaak stage teller
+img_stage = pygame.image.load(os.path.join("textures", "Stage.png"))           # opmaak stage teller
+stagecounter = pygame.Rect(250, 550, 200, 50)
 
 img_highscore = pygame.image.load(os.path.join("textures", "Highscore.png"))       # opmaak highscore teller
 highscorecounter = pygame.Rect(450, 550, 350, 50)
@@ -247,18 +249,18 @@ while running:
                         rat.y = random.randint(-1000, -50)
                         rat.x = random.choice([175, 375, 575])
 
-        pygame.draw.rect(scherm, zwart, scorecounter)                     # aanmaak scorecounter
+        blit_score = scherm.blit(img_score, scorecounter)                     # aanmaak scorecounter
         if score < 1000000:
-            text = font.render(f"Score: {score}", True, wit)
+            text = font.render(f"Score: {score}", True, zwart)
             text_rect = text.get_rect(center=scorecounter.center)
             scherm.blit(text, text_rect)
         else:
-            text = font.render("Cheating huh?", True, wit)
+            text = font.render("Cheating huh?", True, zwart)
             text_rect = text.get_rect(center=scorecounter.center)
             scherm.blit(text, text_rect)
 
-        pygame.draw.rect(scherm, zwart, stagecounter)                   # aanmaak stagecounter
-        text = font.render(f"Stage: {stage}", True, wit)
+        blit_stage = scherm.blit(img_stage, stagecounter)                   # aanmaak stagecounter
+        text = font.render(f"Stage: {stage}", True, zwart)
         text_rect = text.get_rect(center=stagecounter.center)
         scherm.blit(text, text_rect)
 
