@@ -37,6 +37,8 @@ gamepaused = False
 
 img_name_display = pygame.image.load(os.path.join("textures", "NameDisplay.png"))           # opmaak naam input
 name_display = pygame.Rect(50, 25, 700, 50)
+img_name_input = pygame.image.load(os.path.join("textures", "NameInput.png"))
+img_name_input_clicked = pygame.image.load(os.path.join("textures", "NameInputClicked.png"))
 name_input = pygame.Rect(175, 100, 450, 50)
 name_being_input = False
 
@@ -87,12 +89,12 @@ while running:
         text_rect = text.get_rect(center=name_display.center)
         scherm.blit(text, text_rect)
 
-        pygame.draw.rect(scherm, zwart, name_input)                    # aanmaken naam input knop
+        blit_name_input = scherm.blit(img_name_input, name_input)                    # aanmaken naam input knop
         if name_being_input == False:
             text = font.render("Click to enter new name", True, wit)
         else:
             text = font.render("Click again to confirm", True, wit)
-            pygame.draw.rect(scherm, grijs, name_input)
+            blit_name_input = scherm.blit(img_name_input_clicked, name_input)
         text_rect = text.get_rect(center=name_input.center)
         scherm.blit(text, text_rect)
 
