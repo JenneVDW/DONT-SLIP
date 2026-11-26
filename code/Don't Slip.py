@@ -53,8 +53,8 @@ character.y = 425
 character_collision = pygame.Rect(0, 450, 50, 25)
 
 img_banaan = pygame.image.load(os.path.join("textures", "Banana.png"))            # opmaak van banaan
-banaan_variant_1 = pygame.transform.rotate(pygame.transform.flip(img_banaan, random.randint(0, 1), False), random.randint(-15,15))
-banaan_variant_2 = pygame.transform.rotate(pygame.transform.flip(img_banaan, random.randint(0, 1), False), random.randint(-15,15))
+banaan_variant_1 = pygame.transform.rotate(pygame.transform.flip(img_banaan, bool(random.randint(0, 1)), False), random.randint(-15,15))
+banaan_variant_2 = pygame.transform.rotate(pygame.transform.flip(img_banaan, bool(random.randint(0, 1)), False), random.randint(-15,15))
 banaan_1 = img_banaan.get_rect()
 banaan_2 = img_banaan.get_rect()
 
@@ -206,7 +206,7 @@ while running:
         if banaan_1.y > 600:
             banaan_1.y = random.randint(-300, -50)
             banaan_1.x = random.choice([175, 375, 575])
-            banaan_variant_1 = pygame.transform.rotate(pygame.transform.flip(img_banaan, random.randint(0, 1), False), random.randint(-15,15))
+            banaan_variant_1 = pygame.transform.rotate(pygame.transform.flip(img_banaan, bool(random.randint(0, 1)), False), random.randint(-15,15))
             score += 1
         if stage > 2:                                                   # aanmaak banaan 2
             blit_banaan = scherm.blit(banaan_variant_2, banaan_2)
@@ -214,7 +214,7 @@ while running:
             if banaan_2.y > 600:
                 banaan_2.y = random.randint(-300, -50)
                 banaan_2.x = random.choice([175, 375, 575])
-                banaan_variant_2 = pygame.transform.rotate(pygame.transform.flip(img_banaan, random.randint(0, 1), False), random.randint(-15,15))
+                banaan_variant_2 = pygame.transform.rotate(pygame.transform.flip(img_banaan, bool(random.randint(0, 1)), False), random.randint(-15,15))
                 score += 1
 
         if stage > 3:                                                   # aanmaak rat
