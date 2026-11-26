@@ -17,8 +17,19 @@ When you reach certain scores, the stage you are at will increase.
 Every stage changes something about the gameplay, this could be speed or new obstacles you need to dodge.
 
 # STAGES
-DON'T SLIP has stages corresponding to specific scores reached:
-1. 10 score
+DON'T SLIP has stages corresponding to specific scores reached *(to be updated)*:
+1. 0 - 9 score
+2. 10 - 49 score
+3. 50 - 99 score
+4. 100 - 149 score
+5. 150 - 199 score
+6. 200 - 249 score
+7. 250 - 299 score
+8. 300 - 349 score
+9. 350 - 399 score
+10. 400+ score
+
+*(To know what changes about the gameplay, you will have to play the game or inspect the code.)*
 
 # CONTROLS
 DON'T SLIP has very few and very simple controls:
