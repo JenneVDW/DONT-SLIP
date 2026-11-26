@@ -24,7 +24,7 @@ os.makedirs(saves_dir, exist_ok=True)
 delete_old_saves = False           
 all_scores = []
 
-pygame.init()                                           # opstart van pygame
+_ = pygame.init()                                       # opstart van pygame
 scherm = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("DON'T SLIP! v1.0.1")
 font = pygame.font.Font(None, 50)
@@ -84,12 +84,12 @@ while running:
 
     if startscherm:
 
-        scherm.fill(groen)
+        _ = scherm.fill(groen)
 
         blit_name_display = scherm.blit(img_name_display, name_display)                   # aanmaken naam display
         text = font.render(f"Save File: {name}", True, wit)
         text_rect = text.get_rect(center=name_display.center)
-        scherm.blit(text, text_rect)
+        _ = scherm.blit(text, text_rect)
 
         blit_name_input = scherm.blit(img_name_input, name_input)                    # aanmaken naam input knop
         if name_being_input == False:
@@ -98,7 +98,7 @@ while running:
             text = font.render("Click again to confirm", True, wit)
             blit_name_input = scherm.blit(img_name_input_clicked, name_input)
         text_rect = text.get_rect(center=name_input.center)
-        scherm.blit(text, text_rect)
+        _ = scherm.blit(text, text_rect)
 
         if name_being_input == False:
             try:                                                                # get previous highscore
@@ -107,7 +107,7 @@ while running:
             except FileNotFoundError:
                 highscore = 0
                 with open(os.path.join(saves_dir, f"{name}.txt"), "w") as file:
-                    file.write("0")
+                    _ = file.write("0")
 
         blit_leaderboard = scherm.blit(img_leaderboard, leaderboard)      # aanmaak leaderboard
         all_scores = []
@@ -120,40 +120,40 @@ while running:
             all_scores.sort(key = lambda y: y[1], reverse = True)
         text = font.render("Local Leaderboard", True, wit)              # leaderboard text
         text_rect = text.get_rect(center=leaderboard_text.center)
-        scherm.blit(text, text_rect)                  
+        _ = scherm.blit(text, text_rect)
         x, y = all_scores[0]                                           # number 1
         text = font_small.render(f"1. {x}: {y}", True, wit)
         text_rect = text.get_rect(center=leaderboard_1.center)
-        scherm.blit(text, text_rect)                  
+        _ = scherm.blit(text, text_rect)
         if len(all_scores) > 1:                                         # number 2
             x, y = all_scores[1]
             text = font_small.render(f"2. {x}: {y}", True, wit)
             text_rect = text.get_rect(center=leaderboard_2.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
         if len(all_scores) > 2:                                         # number 3
             x, y = all_scores[2]
             text = font_small.render(f"3. {x}: {y}", True, wit)
             text_rect = text.get_rect(center=leaderboard_3.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
 
         blit_startknop = scherm.blit(img_startknop, startknop)                      # aanmaken startknop
         text = font.render("Start", True, wit)
         text_rect = text.get_rect(center=startknop.center)
-        scherm.blit(text, text_rect)
+        _ = scherm.blit(text, text_rect)
 
         blit_highscore = scherm.blit(img_highscore, highscorecounter)               # aanmaken highscorecounter
         if highscore < 1000000:
             text = font.render(f"Highscore: {highscore}", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
         else:
             text = font.render("Cheating huh?", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
 
     if gamerunning:
 
-        scherm.fill(groen)
+        _ = scherm.fill(groen)
 
         character.x += vel_a                                            # aanmaken character
         if character.x in [150, 350, 550]:
@@ -252,31 +252,31 @@ while running:
         if score < 1000000:
             text = font.render(f"Score: {score}", True, zwart)
             text_rect = text.get_rect(center=scorecounter.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
         else:
             text = font.render("Cheating huh?", True, zwart)
             text_rect = text.get_rect(center=scorecounter.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
 
         blit_stage = scherm.blit(img_stage, stagecounter)                   # aanmaak stagecounter
         text = font.render(f"Stage: {stage}", True, zwart)
         text_rect = text.get_rect(center=stagecounter.center)
-        scherm.blit(text, text_rect)
+        _ = scherm.blit(text, text_rect)
 
         blit_highscore = scherm.blit(img_highscore, highscorecounter)               # aanmaak highscorecounter
         if highscore < 1000000:
             text = font.render(f"Highscore: {highscore}", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
         else:
             text = font.render("Cheating huh?", True, zwart)
             text_rect = text.get_rect(center=highscorecounter.center)
-            scherm.blit(text, text_rect)
+            _ = scherm.blit(text, text_rect)
 
         if score > highscore:                                           #highscore saver
             highscore = score
             with open(os.path.join(saves_dir, f"{name}.txt"), "w") as file:
-                file.write(str(highscore))
+                _ = file.write(str(highscore))
 
         if character_collision.colliderect(banaan_1):                             # collisionchecks
             startscherm = True
@@ -290,10 +290,10 @@ while running:
 
     if gamepaused:
 
-        pygame.draw.rect(scherm, zwart, gamepauseddisplay)                   # game paused text
+        _ = pygame.draw.rect(scherm, zwart, gamepauseddisplay)                # game paused text
         text = font.render("Game Paused", True, wit)
         text_rect = text.get_rect(center=gamepauseddisplay.center)
-        scherm.blit(text, text_rect)
+        _ = scherm.blit(text, text_rect)
 
         if stored_vel_a < 0:
             blit_character = scherm.blit(img_character_turning_left, character)
