@@ -197,7 +197,7 @@ while running:
             stage = 8
         elif score < 400:
             stage = 9
-        elif score < 500:
+        elif score >= 400:
             stage = 10
 
         blit_banaan = scherm.blit(banaan_variant_1, banaan_1)           # aanmaak banaan 1
