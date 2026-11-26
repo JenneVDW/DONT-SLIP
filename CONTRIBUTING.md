@@ -1,3 +1,7 @@
+# HOW TO HELP
+If you want to help in improving this game, you can do so by creating pull requests or Issues.
+If I find your addition usefull and I implement it, you will be added to the CONTRIBUTIONS list under the fitting subsection.
+
 # CONTRIBUTIONS
 Game Design:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
