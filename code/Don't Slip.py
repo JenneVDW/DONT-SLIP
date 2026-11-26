@@ -3,7 +3,6 @@ import sys
 import pygame
 import time
 import random
-from pynput import keyboard
 
 groen = (0, 100, 50)                                                # variables
 zwart = (0, 0, 0)
