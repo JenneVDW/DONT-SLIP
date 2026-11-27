@@ -313,8 +313,8 @@ while running:
                 if startknop.collidepoint(event.pos):
                     startscherm = False
                     gamerunning = True
-                    score = 100                         # OP 0 ZETTEN VOOR ECHTE RELEASE
-                    speed = 2                           # DELETE DEZE LIJN VOOR ECHTE RELEASE
+                    score = 0                         # OP 0 ZETTEN VOOR ECHTE RELEASE
+                    # speed = 2                           # DELETE DEZE LIJN VOOR ECHTE RELEASE
                     vel_a = 0
                     vel_b = 2
                     character.x = 350
