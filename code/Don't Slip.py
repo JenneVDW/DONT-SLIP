@@ -26,7 +26,7 @@ all_scores = []
 
 pygame.init()                                           # opstart van pygame
 scherm = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("DON'T SLIP! v1.0.1")
+pygame.display.set_caption("DON'T SLIP!")
 font = pygame.font.Font(None, 50)
 font_small = pygame.font.Font(None, 35)
 running = True
