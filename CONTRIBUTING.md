@@ -1,4 +1,4 @@
-# HOW TO HELP
+# HOW TO CONTRIBUTE
 If you want to help in improving this game, you can do so by creating pull requests or Issues.
 If I find your addition usefull and I implement it, you will be added to the CONTRIBUTIONS list under the fitting subsection.
 
