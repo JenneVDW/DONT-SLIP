@@ -23,10 +23,11 @@ Playtesters:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
 - Ties Delobelle
 - Ines Ben Atigue
-- Elias El Massaoul
+- [Elias El Massaoul](https://github.com/elmassaoulelias-crypto)
 - Wout Van Assche
 - [Arn Biesbrouck](https://github.com/Haydarann)
 - [Bart Vandewoestyne](https://github.com/BartVandewoestyne)
+- Viktor Verlinde
 
 Bugtesters:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
