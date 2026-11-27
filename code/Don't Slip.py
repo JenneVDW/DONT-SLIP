@@ -78,7 +78,8 @@ leaderboard_1 = pygame.Rect(150, 238, 500, 50)          # opmaak van leaderboard
 leaderboard_2 = pygame.Rect(150, 288, 500, 50)
 leaderboard_3 = pygame.Rect(150, 338, 500, 50)
 
-gamepauseddisplay = pygame.Rect(0, 0, 300, 50)          # opmaak pauseddisplay
+img_gamepaused = pygame.image.load(os.path.join("textures", "GamePaused.png"))          # opmaak pauseddisplay
+gamepauseddisplay = pygame.Rect(0, 0, 300, 50)
 
 while running:
 
@@ -290,7 +291,7 @@ while running:
 
     if gamepaused:
 
-        pygame.draw.rect(scherm, zwart, gamepauseddisplay)                   # game paused text
+        blit_gamepaused = scherm.blit(img_gamepaused, gamepauseddisplay)                   # game paused text
         text = font.render("Game Paused", True, wit)
         text_rect = text.get_rect(center=gamepauseddisplay.center)
         scherm.blit(text, text_rect)
