@@ -7,7 +7,7 @@ Game Design:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
 - Ties Delobelle
 - [Bart Vandewoestyne](https://github.com/BartVandewoestyne) (als ik idee voor muziek gebruik)
-- Ines ben Atigue (als ik het idee van jumpscare gebruik)
+- [Ines Ben Atigue](https://github.com/inesbenatigue11) (als ik het idee van jumpscare gebruik)
 
 Character Design:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
