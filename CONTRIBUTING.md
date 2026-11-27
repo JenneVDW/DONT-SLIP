@@ -27,7 +27,7 @@ Playtesters:
 - Wout Van Assche
 - [Arn Biesbrouck](https://github.com/Haydarann)
 - [Bart Vandewoestyne](https://github.com/BartVandewoestyne)
-- Viktor Verlinde
+- [Viktor Verlinde](https://github.com/bakjefriet)
 
 Bugtesters:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
