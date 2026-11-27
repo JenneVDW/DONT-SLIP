@@ -22,7 +22,7 @@ Art:
 Playtesters:
 - [Jenne Vandewoestyne](https://github.com/JenneVDW)
 - Ties Delobelle
-- Ines Ben Atigue
+- [Ines Ben Atigue](https://github.com/inesbenatigue11)
 - [Elias El Massaoul](https://github.com/elmassaoulelias-crypto)
 - Wout Van Assche
 - [Arn Biesbrouck](https://github.com/Haydarann)
